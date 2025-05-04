@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Futuristic Landing Page</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .floating {
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      font-weight: bold;
+      margin-top: 1.5rem;
+    }
+
+    .countdown-box {
+      background-color: #5b21b6; /* purple-800 */
+      padding: 1rem 1.25rem;
+      border-radius: 0.5rem;
+      font-size: 1.5rem;
+      min-width: 70px;
+      text-align: center;
+      color: white;
+    }
+
+    .countdown-label {
+      font-size: 0.875rem;
+      margin-top: 0.25rem;
+      color: #ddd;
+    }
+  </style>
+</head>
+<body class="bg-black text-white font-sans">
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline class="fixed top-0 left-0 w-full h-full object-cover">
+    <source src="videos/17770573-uhd_3840_2160_24fps.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="overlay"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="absolute top-0 left-0 w-full z-50 bg-transparent text-white px-6 py-4 flex items-center justify-between">
+    <div class="flex items-center space-x-4">
+      <img src="images/ChatGPT Image May 5, 2025, 12_39_23 AM.png" alt="Logo" class="w-24 h-28 object-contain" />
+    </div>
+    <div class="hidden md:flex space-x-6 text-sm md:text-base">
+      <a href="#" class="hover:underline">Friends</a>
+      <a href="#" class="hover:underline">Investors</a>
+      <a href="#" class="hover:underline">Attorney</a>
+      <a href="#" class="hover:underline">About</a>
+    </div>
+    <div class="hidden md:flex space-x-4 text-sm md:text-base">
+      <a href="#" class="hover:underline">EN</a>
+      <a href="#" class="hover:underline">Help</a>
+      <a href="#" class="hover:underline font-semibold">Sign in</a>
+    </div>
+  </nav>
+
+  <header class="flex items-center justify-center h-screen text-center px-4 content">
+    <div>
+      <!-- Animated Head Image Only (No Logo Here) -->
+      <img src="images/ChatGPT Image May 3, 2025, 10_10_33 PM.png" alt="AI Head" class="w-80 mx-auto floating" />
+
+      <!-- Headline -->
+      <h1 class="text-4xl md:text-6xl font-bold mt-6">GoMAXPAIN Comming Soon</h1>
+
+      <!-- Countdown Timer -->
+      <div class="countdown-container" id="countdown"></div>
+
+
+  <script>
+    // Countdown Timer
+    const countdownEl = document.getElementById('countdown');
+    const targetDate = new Date();
+    targetDate.setDate(targetDate.getDate() + 27);
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / 1000 / 60) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      countdownEl.innerHTML = `
+        <div class="countdown-box">
+          ${String(days).padStart(2, '0')}<div class="countdown-label">DAYS</div>
+        </div>
+        <div class="countdown-box">
+          ${String(hours).padStart(2, '0')}<div class="countdown-label">HOURS</div>
+        </div>
+        <div class="countdown-box">
+          ${String(minutes).padStart(2, '0')}<div class="countdown-label">MINUTES</div>
+        </div>
+        <div class="countdown-box">
+          ${String(seconds).padStart(2, '0')}<div class="countdown-label">SECONDS</div>
+        </div>
+      `;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+  </script>
+</body>
+</html>
